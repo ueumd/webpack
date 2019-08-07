@@ -17,8 +17,7 @@ module.exports = {
   },
   optimization: {
     minimizer: [
-      new UglifyJs({}),
-      new OptimizeCSSAssetsPlugin({})
+      new UglifyJs({})
     ]
   },
   plugins: [
@@ -38,7 +37,9 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {from:__dirname+'/src/images', to:__dirname+'/dist/images'}
-    ])
+    ]),
+    // 压缩CSS
+    new OptimizeCSSAssetsPlugin({})
   ],
   module: {
     rules: [
@@ -61,16 +62,25 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtracPlugin.loader,
+          {
+            loader: MiniCssExtracPlugin.loader,
+            options: {
+              publicPath: '../'
+            }
+          },
           'css-loader'  // 解析 @import url
         ],
+        // use: [
+        //   MiniCssExtracPlugin.loader,
+        //   'css-loader'  // 解析 @import url
+        // ],
         exclude: /node_modules/
       },
       {
         test: /.sass$/,
         use: [
           MiniCssExtracPlugin.loader,
-          'css-loader',
+          'css-loader?minimize',
           'less-loader'
         ],
         include: resolve(__dirname, 'src'), // 限制范围，提搞打包速度

@@ -7,7 +7,7 @@ module.exports = merge(webpackBaseConf, {
   devServer: {                              // 开发服务器的配置
     port: 3000,
     progress: false,
-    contentBase: 'dist', //静态文件根目录
+    contentBase: path.resolve(__dirname, 'dist'), //静态文件根目录
     compress: true
   },
 })
