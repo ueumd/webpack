@@ -6,9 +6,9 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && npm run pro",
-    "serve": "cross-env NODE_ENV=DEV webpack-dev-server --config webpack.dev.conf.js",
-    "dev": "npm run clean && cross-env NODE_ENV=DEV webpack --config webpack.dev.conf.js",
-    "pro": "cross-env NODE_ENV=PRODUCT webpack --config webpack.pro.conf.js"
+    "serve": "cross-env NODE_ENV=DEV webpack-dev-server --config build/webpack.dev.conf.js",
+    "dev": "npm run clean && cross-env NODE_ENV=DEV webpack --config build/webpack.dev.conf.js",
+    "pro": "cross-env NODE_ENV=PRODUCT webpack --config build/webpack.pro.conf.js"
   },
   "repository": {
     "type": "git",

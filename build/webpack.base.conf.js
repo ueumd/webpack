@@ -12,7 +12,7 @@ function resolve(dir) {
 module.exports = {
   entry: './src/js/app.js',                   // 入口
   output: {
-    path: path.resolve(__dirname, './dist'),  // 路径必须是一个绝对路径 path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, '../dist'),  // 路径必须是一个绝对路径 path.resolve(__dirname, 'dist')
     filename: 'js/bundle.[hash:8].js'         // 打包后的文件名
   },
   optimization: {
@@ -64,9 +64,9 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtracPlugin.loader,
-            options: {
-              publicPath: '../'
-            }
+            // options: {
+            //   publicPath: '../'
+            // }
           },
           'css-loader'  // 解析 @import url
         ],
