@@ -6,6 +6,15 @@
 </template>
 
 <script>
+  class Person {
+    constructor(name){
+      this.name = name
+    }
+
+    showName() {
+      console.log(this.name)
+    }
+  }
   export default {
     name: 'NoteBook',
     data() {
@@ -28,6 +37,9 @@
       let a = ['A', 'B']
       let b = [...a, 'C', 1, 3, 4]
       console.log(b)
+
+      let p = new Person('Vue')
+      p.showName()
     }
   }
 </script>
