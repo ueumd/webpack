@@ -9,5 +9,5 @@ module.exports = merge(webpackBaseConf, {
     progress: false,
     contentBase: path.resolve(__dirname, 'dist'), //静态文件根目录
     compress: true
-  },
+  }
 })
