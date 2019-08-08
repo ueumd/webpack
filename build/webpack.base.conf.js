@@ -19,8 +19,17 @@ module.exports = {
   },
   optimization: {
     minimizer: [
-      // new UglifyJsWebpackPlugin()
-
+      // new UglifyJsWebpackPlugin({
+      //   uglifyOptions: {
+      //     beautify: false, // 最紧凑的输出
+      //     comments: false, // 删除所有的注释
+      //     compress: {
+      //       drop_console: true, // console
+      //       drop_debugger: false,
+      //       pure_funcs: ['console.log'] // 移除console
+      //     }
+      //   }
+      // })
     ]
   },
   resolve: {
