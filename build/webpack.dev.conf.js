@@ -2,7 +2,7 @@ const path = require('path')
 const merge = require('webpack-merge')
 const webpackBaseConf = require('./webpack.base.conf')
 module.exports = merge(webpackBaseConf, {
-  devtool: 'inline-source-map',             //开启sourcemap
+  devtool: 'source-map',                    //开启sourcemap
   mode: 'development',                      // 默认两种 production development,
   devServer: {                              // 开发服务器的配置
     port: 3000,

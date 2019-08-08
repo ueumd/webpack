@@ -2,6 +2,10 @@
   <div id="app">
     <img src="./assets/logo.png">
     <div class="home"></div>
+   <div>
+     <router-link to="/">Home</router-link>
+     <router-link to="/notebook">Notebook</router-link>
+   </div>
     <router-view/>
   </div>
 </template>

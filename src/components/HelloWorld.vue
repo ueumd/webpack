@@ -90,6 +90,22 @@
       return {
         msg: 'Welcome to Your Vue.js App'
       }
+    },
+    methods: {
+      getJoke() {
+        return fetch('https://api.apiopen.top/getJoke?page=1&count=2&type=video', {
+          method: 'GET'
+        }).then(res => {
+          return res.json()
+        })
+      }
+    },
+    async mounted(){
+      let res = await this.getJoke()
+      console.log('res', res)
+      let a = ['A', 'B']
+      let b = [...a, 'C', 1, 3, 4]
+      console.log(b)
     }
   }
 </script>
