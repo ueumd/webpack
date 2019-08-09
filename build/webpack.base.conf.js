@@ -9,6 +9,16 @@ function resolve(dir) {
   return path.resolve(__dirname, dir)
 }
 
+//console-log-on-build-webpack-plugin.js
+const pluginName = 'ConsoleLogOnBuildWebpackPlugin';
+class ConsoleLogOnBuildWebpackPlugin {
+  apply(compiler){
+    compiler.hooks.run.tap(pluginName, compilation=>{
+      console.info('[----------webpack构建过程开始-------------]')
+    })
+  }
+}
+
 module.exports = {
   entry: './src/js/app.js',                   // 入口
   output: {
@@ -39,15 +49,11 @@ module.exports = {
       {from:__dirname+'/src/images', to:__dirname+'/dist/images'}
     ]),
     // 压缩CSS
-    new OptimizeCSSAssetsPlugin({})
+    new OptimizeCSSAssetsPlugin({}),
+    new ConsoleLogOnBuildWebpackPlugin()
   ],
   module: {
     rules: [
-      /**
-       webpack loader的执行顺序为
-       从上到下
-       从右到左
-       */
       {
         test: /\.js/,
         use: {
