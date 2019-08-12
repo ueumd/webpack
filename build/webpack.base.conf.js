@@ -5,19 +5,13 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')  /
 const UglifyJs = require('uglifyjs-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
+const ConsoleLogOnBuildWebpackPlugin = require('./plugins/console-log-on-build-webpack-plugin')
+const EmitTemplate = require('./plugins/emit-template-plugin')
+
 function resolve(dir) {
   return path.resolve(__dirname, dir)
 }
 
-//console-log-on-build-webpack-plugin.js
-const pluginName = 'ConsoleLogOnBuildWebpackPlugin';
-class ConsoleLogOnBuildWebpackPlugin {
-  apply(compiler){
-    compiler.hooks.run.tap(pluginName, compilation=>{
-      console.info('[----------webpack构建过程开始-------------]')
-    })
-  }
-}
 
 module.exports = {
   entry: './src/js/app.js',                   // 入口
@@ -40,6 +34,14 @@ module.exports = {
         removeComments: true,         // 移除 HTML 中的注释
         collapseWhitespace: true,     // 删除空白符与换行符
         minifyCSS: true               // 压缩内联 css
+      }
+    }),
+    new EmitTemplate({
+      template: './src/template.html',
+      filename: path.resolve(__dirname, '../template.html'),
+      params: {
+        title: 'Plugin',
+        name: 'Hello Webpack'
       }
     }),
     new MiniCssExtracPlugin({
